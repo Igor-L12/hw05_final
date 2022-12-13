@@ -1,11 +1,11 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.cache import cache_page
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.cache import cache_page
 
-from .forms import PostForm, CommentForm
-from .models import Group, Post, User, Comment, Follow
+from .forms import CommentForm, PostForm
+from .models import Comment, Follow, Group, Post, User
 
 
 @cache_page(20, key_prefix='index_page')
@@ -124,6 +124,7 @@ def follow_index(request):
         'page_obj': page_obj,
     }
     return render(request, 'posts/follow.html', context)
+
 
 @login_required
 def profile_follow(request, username):
