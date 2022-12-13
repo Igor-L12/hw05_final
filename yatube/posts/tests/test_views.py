@@ -16,6 +16,7 @@ User = get_user_model()
 
 TEMP_MEDIA_ROOT = tempfile.mkdtemp(dir=settings.BASE_DIR)
 
+
 @override_settings(MEDIA_ROOT=TEMP_MEDIA_ROOT)
 class PostViewTests(TestCase):
     @classmethod
@@ -59,7 +60,7 @@ class PostViewTests(TestCase):
         """Удаляем тестовые медиа."""
         super().tearDownClass()
         shutil.rmtree(TEMP_MEDIA_ROOT, ignore_errors=True)
-    
+
     def setUp(self):
         self.guest_client = Client()
         self.authorized_client = Client()
@@ -238,7 +239,7 @@ class PostViewTests(TestCase):
         )
         response_content_3 = response_3.content
         self.assertNotEqual(response_content_2, response_content_3)
-    
+
     def tearDown(self):
         cache.clear()
 
@@ -291,7 +292,9 @@ class PostViewTests(TestCase):
             self.authorized_client.get(
                 reverse(
                     'posts:follow_index'
-                    )))
+                )
+            )
+        )
         first_object = response_follow.context
         self.assertNotEqual(len(first_object['page_obj']), 1)
 

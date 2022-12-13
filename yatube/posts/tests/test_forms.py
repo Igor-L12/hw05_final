@@ -136,3 +136,4 @@ class PostFormTests(TestCase):
         self.assertEqual(comment.text, form_data['text'])
         self.assertEqual(comment.post, PostFormTests.post)
         self.assertEqual(comment.author, PostFormTests.user)
+
