@@ -37,7 +37,8 @@ class PostURLTests(TestCase):
     def test_post_index_url_exists_at_desired_location(self):
         """Страница / доступна любому пользователю."""
         url_status = {
-            reverse('posts:index'): HTTPStatus.OK,}
+            reverse('posts:index'): HTTPStatus.OK
+        }
         for url, status_code in url_status.items():
             with self.subTest(url=url):
                 response = self.guest_client.get(url)
@@ -49,7 +50,8 @@ class PostURLTests(TestCase):
             reverse(
                 'posts:group_list',
                 kwargs={'slug': PostURLTests.group.slug}
-        ): HTTPStatus.OK,}
+        ): HTTPStatus.OK
+        }
         for url, status_code in url_status.items():
             with self.subTest(url=url):
                 response = self.guest_client.get(url)
@@ -61,7 +63,8 @@ class PostURLTests(TestCase):
             reverse(
                 'posts:profile',
                 kwargs={'username': PostURLTests.auth_create.username}
-        ): HTTPStatus.OK,}
+        ): HTTPStatus.OK
+        }
         for url, status_code in url_status.items():
             with self.subTest(url=url):
                 response = self.guest_client.get(url)
@@ -73,7 +76,8 @@ class PostURLTests(TestCase):
             reverse(
                 'posts:post_detail',
                 kwargs={'post_id': PostURLTests.post.id}
-        ): HTTPStatus.OK,}
+        ): HTTPStatus.OK
+        }
         for url, status_code in url_status.items():
             with self.subTest(url=url):
                 response = self.guest_client.get(url)
@@ -82,7 +86,8 @@ class PostURLTests(TestCase):
     def test_post_create_url_exists_at_desired_location(self):
         """Страница /create/ доступна авторизованному пользователю."""
         url_status = {
-            reverse('posts:post_create'): HTTPStatus.OK,}
+            reverse('posts:post_create'): HTTPStatus.OK
+        }
         for url, status_code in url_status.items():
             with self.subTest(url=url):
                 response = self.author.get(url)
@@ -94,7 +99,8 @@ class PostURLTests(TestCase):
             reverse(
                 'posts:post_edit',
                 kwargs={'post_id': PostURLTests.post.id}
-        ): HTTPStatus.OK,}
+        ): HTTPStatus.OK
+        }
         for url, status_code in url_status.items():
             with self.subTest(url=url):
                 response = self.author.get(url)
