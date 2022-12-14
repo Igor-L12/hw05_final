@@ -42,7 +42,7 @@ class PostURLTests(TestCase):
         for url, status_code in url_status.items():
             with self.subTest(url=url):
                 response = self.guest_client.get(url)
-                self.assertEqual(response.status_code, status_code)       
+                self.assertEqual(response.status_code, status_code)
 
     def test_post_group_url_exists_at_desired_location(self):
         """Страница /group/ доступна любому пользователю."""
@@ -50,7 +50,7 @@ class PostURLTests(TestCase):
             reverse(
                 'posts:group_list',
                 kwargs={'slug': PostURLTests.group.slug}
-        ): HTTPStatus.OK
+            ): HTTPStatus.OK
         }
         for url, status_code in url_status.items():
             with self.subTest(url=url):
@@ -63,7 +63,7 @@ class PostURLTests(TestCase):
             reverse(
                 'posts:profile',
                 kwargs={'username': PostURLTests.auth_create.username}
-        ): HTTPStatus.OK
+            ): HTTPStatus.OK
         }
         for url, status_code in url_status.items():
             with self.subTest(url=url):
@@ -76,7 +76,7 @@ class PostURLTests(TestCase):
             reverse(
                 'posts:post_detail',
                 kwargs={'post_id': PostURLTests.post.id}
-        ): HTTPStatus.OK
+            ): HTTPStatus.OK
         }
         for url, status_code in url_status.items():
             with self.subTest(url=url):
@@ -99,7 +99,7 @@ class PostURLTests(TestCase):
             reverse(
                 'posts:post_edit',
                 kwargs={'post_id': PostURLTests.post.id}
-        ): HTTPStatus.OK
+            ): HTTPStatus.OK
         }
         for url, status_code in url_status.items():
             with self.subTest(url=url):
