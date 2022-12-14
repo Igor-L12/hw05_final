@@ -127,7 +127,7 @@ class PostFormTests(TestCase):
             ),
             data=form_data
         )
-        comment = Comment.objects.first()
+        comment = Comment.objects.all()[:1].get()
         self.assertRedirects(response, reverse(
             'posts:post_detail',
             kwargs={'post_id': PostFormTests.post.id}
