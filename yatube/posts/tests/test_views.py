@@ -185,7 +185,6 @@ class PostViewTests(TestCase):
     def test_paginator_correct_context(self):
         """Шаблон index,
         group_list и profile сформированы с корректным Paginator."""
-        batch_size = 12
         paginator_obj = [
             Post(
                 author=PostViewTests.auth_create,
@@ -193,7 +192,7 @@ class PostViewTests(TestCase):
                 group=PostViewTests.group
             )
             for i in range(12)]
-        Post.objects.bulk_create(list(paginator_obj), batch_size)
+        Post.objects.bulk_create(paginator_obj)
         paginator_data = {
             'index': reverse('posts:index'),
             'group': reverse(
